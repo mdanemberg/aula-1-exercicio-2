@@ -1,16 +1,20 @@
 // Esse import do db é pra criar um "database" fake
 import db from './helpers/db'
-import { getCategories } from './services/categories'
-import { addItem } from './services/items'
+import Emitter from './helpers/emitter'
+import ItemForm from './components/ItemForm'
+import ItemList from './components/ItemList'
 
 db()
+const emitter = new Emitter()
 
-getCategories()
-  .then((categories) => {
-    console.log(categories)
-  })
+const itemForm = new ItemForm({
+  container: 'form-container',
+  emitter
+})
+const itemList = new ItemList({
+  container: 'item-list-container',
+  emitter
+})
 
-addItem({name: 'OMO', categoryId: 1})
-  .then((item) => {
-    console.log(item)
-  })
+itemForm.render()
+itemList.render()
