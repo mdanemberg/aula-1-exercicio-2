@@ -1,1 +1,3 @@
-# aula-1-exercicio-2
+* `npm start`
+* `npm run watch`
+* `npm run build`
